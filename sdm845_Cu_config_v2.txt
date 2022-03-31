@@ -1,8 +1,8 @@
 [about]
-config_name=sdm845调度V1
+config_name=sdm845调度V2
 config_author=PPKun07@coolapk
 config_describe=根据845设备为基准的调度
-target_adj_ver=100
+target_adj_ver=200
 [item_recommend]
 describe=所有设定项的介绍,下列项目适用于所有内核和soc,不需要考虑内核的差异
 sc_extra_perf{
