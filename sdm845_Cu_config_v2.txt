@@ -1,0 +1,411 @@
+[about]
+config_name=sdm845调度V1
+config_author=PPKun07@coolapk
+config_describe=根据845设备为基准的调度
+target_adj_ver=100
+[item_recommend]
+describe=所有设定项的介绍,下列项目适用于所有内核和soc,不需要考虑内核的差异
+sc_extra_perf{
+    describe=小核丛集的性能冗余,范围0-100,冗余越大性能释放越积极
+}
+bc_extra_perf{
+    describe=大核丛集的性能冗余
+}
+xc_extra_perf{
+    describe=超大核丛集的性能冗余
+}
+sc_min_level{
+    describe=小核丛集的最低频率级别,范围0-20,0即为最低频率,20即为最高频率,频率级别=实际频率/丛集最高频率*20
+}
+sc_max_level{
+    describe=小核丛集的最高频率级别,范围10-20
+}
+bc_min_level{
+    describe=大核丛集的最低频率级别,范围同小核丛集
+}
+bc_max_level{
+    describe=大核丛集的最高频率级别,范围同小核丛集
+}
+xc_min_level=0
+    describe=超大核丛集的最低频率级别,范围同小核丛集
+}
+xc_max_level{
+    describe=超大核丛集的最高频率级别,范围同小核丛集
+}
+sched_rt_boost{
+    describe=内核调度器重要进程的boost,影响CPU频率的选择和负载的迁移,范围0-20,值越高越倾向于使用大核丛集和快速提升CPU频率
+}
+sched_ta_boost{
+    describe=内核调度器顶层进程的boost
+}
+sched_boost{
+    describe=内核调度器全局的boost,影响CPU频率的选择和负载的迁移,范围0-1,似乎对手机性能释放有反作用(？)
+}
+[powersave]
+describe=省电模式下的设定列表
+common{
+    describe=常规状态下的设定
+    sc_min_level=0
+    sc_max_level=11
+    bc_min_level=0
+    bc_max_level=7
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=7
+    bc_extra_perf=4
+    xc_extra_perf=0
+    sched_rt_boost=0
+    sched_ta_boost=0
+    sched_boost=0
+}
+touch{
+    describe=触摸到屏幕时切换的设定
+    sc_min_level=0
+    sc_max_level=12
+    bc_min_level=0
+    bc_max_level=9
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=9
+    bc_extra_perf=6
+    xc_extra_perf=0
+    sched_rt_boost=0
+    sched_ta_boost=0
+    sched_boost=0
+}
+view_clicked{
+    describe=点击控件时切换的设定
+    sc_min_level=2
+    sc_max_level=12
+    bc_min_level=0
+    bc_max_level=8
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=12
+    bc_extra_perf=7
+    xc_extra_perf=0
+    sched_rt_boost=0
+    sched_ta_boost=0
+    sched_boost=0
+}
+view_swipe{
+    describe=滑动控件时切换的设定
+    sc_min_level=2
+    sc_max_level=16
+    bc_min_level=0
+    bc_max_level=12
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=21
+    bc_extra_perf=13
+    xc_extra_perf=0
+    sched_rt_boost=0
+    sched_ta_boost=0
+    sched_boost=0
+}
+window_changed{
+    describe=窗口改变时切换的设定
+    sc_min_level=6
+    sc_max_level=15
+    bc_min_level=0
+    bc_max_level=14
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=23
+    bc_extra_perf=18
+    xc_extra_perf=0
+    sched_rt_boost=1
+    sched_ta_boost=0
+    sched_boost=0
+}
+cpu_heavy_load{
+    describe=CPU重负载时切换的设定
+    sc_min_level=6
+    sc_max_level=16
+    bc_min_level=4
+    bc_max_level=14
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=30
+    bc_extra_perf=30
+    xc_extra_perf=0
+    sched_rt_boost=5
+    sched_ta_boost=0
+    sched_boost=0
+}
+[balance]
+describe=均衡模式下的设定列表
+common{
+    describe=常规状态下的设定
+    sc_min_level=0
+    sc_max_level=16
+    bc_min_level=0
+    bc_max_level=12
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=21
+    bc_extra_perf=12
+    xc_extra_perf=0
+    sched_rt_boost=0
+    sched_ta_boost=0
+    sched_boost=0
+}
+touch{
+    describe=触摸到屏幕时切换的设定
+    sc_min_level=2
+    sc_max_level=16
+    bc_min_level=0
+    bc_max_level=14
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=26
+    bc_extra_perf=16
+    xc_extra_perf=0
+    sched_rt_boost=0
+    sched_ta_boost=0
+    sched_boost=0
+}
+view_clicked{
+    describe=点击控件时切换的设定
+    sc_min_level=4
+    sc_max_level=18
+    bc_min_level=0
+    bc_max_level=16
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=29
+    bc_extra_perf=19
+    xc_extra_perf=0
+    sched_rt_boost=1
+    sched_ta_boost=0
+    sched_boost=0
+}
+view_swipe{
+    describe=滑动控件时切换的设定
+    sc_min_level=5
+    sc_max_level=18
+    bc_min_level=2
+    bc_max_level=17
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=29
+    bc_extra_perf=45
+    xc_extra_perf=0
+    sched_rt_boost=27
+    sched_ta_boost=13
+    sched_boost=0
+}
+window_changed{
+    describe=窗口改变时切换的设定
+    sc_min_level=6
+    sc_max_level=18
+    bc_min_level=12
+    bc_max_level=18
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=30
+    bc_extra_perf=21
+    xc_extra_perf=0
+    sched_rt_boost=5
+    sched_ta_boost=5
+    sched_boost=0
+}
+cpu_heavy_load{
+    describe=CPU重负载时切换的设定
+    sc_min_level=6
+    sc_max_level=18
+    bc_min_level=12
+    bc_max_level=18
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=30
+    bc_extra_perf=50
+    xc_extra_perf=0
+    sched_rt_boost=30
+    sched_ta_boost=30
+    sched_boost=0
+}
+[performance]
+describe=性能模式下的设定列表
+common{
+    describe=常规状态下的设定
+    sc_min_level=0
+    sc_max_level=20
+    bc_min_level=0
+    bc_max_level=18
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=40
+    bc_extra_perf=40
+    xc_extra_perf=0
+    sched_rt_boost=30
+    sched_ta_boost=30
+    sched_boost=0
+}
+touch{
+    describe=触摸到屏幕时切换的设定
+    sc_min_level=8
+    sc_max_level=20
+    bc_min_level=8
+    bc_max_level=18
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=40
+    bc_extra_perf=40
+    xc_extra_perf=0
+    sched_rt_boost=30
+    sched_ta_boost=30
+    sched_boost=0
+}
+view_clicked{
+    describe=点击控件时切换的设定
+    sc_min_level=10
+    sc_max_level=20
+    bc_min_level=10
+    bc_max_level=18
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=40
+    bc_extra_perf=40
+    xc_extra_perf=0
+    sched_rt_boost=30
+    sched_ta_boost=30
+    sched_boost=0
+}
+view_swipe{
+    describe=滑动控件时切换的设定
+    sc_min_level=12
+    sc_max_level=20
+    bc_min_level=12
+    bc_max_level=18
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=40
+    bc_extra_perf=40
+    xc_extra_perf=0
+    sched_rt_boost=40
+    sched_ta_boost=40
+    sched_boost=0
+}
+window_changed{
+    describe=窗口改变时切换的设定
+    sc_min_level=14
+    sc_max_level=20
+    bc_min_level=14
+    bc_max_level=18
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=40
+    bc_extra_perf=40
+    xc_extra_perf=0
+    sched_rt_boost=40
+    sched_ta_boost=40
+    sched_boost=0
+}
+cpu_heavy_load{
+    describe=CPU重负载时切换的设定
+    sc_min_level=16
+    sc_max_level=20
+    bc_min_level=16
+    bc_max_level=18
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=40
+    bc_extra_perf=40
+    xc_extra_perf=0
+    sched_rt_boost=40
+    sched_ta_boost=40
+    sched_boost=0
+}
+[roridash]
+describe=RoriDash游戏模式下的设定列表
+common{
+    describe=常规状态下的设定
+    sc_min_level=10
+    sc_max_level=20
+    bc_min_level=10
+    bc_max_level=20
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=50
+    bc_extra_perf=50
+    xc_extra_perf=0
+    sched_rt_boost=50
+    sched_ta_boost=50
+    sched_boost=0
+}
+touch{
+    describe=触摸到屏幕时切换的设定
+    sc_min_level=12
+    sc_max_level=20
+    bc_min_level=12
+    bc_max_level=20
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=50
+    bc_extra_perf=50
+    xc_extra_perf=0
+    sched_rt_boost=50
+    sched_ta_boost=50
+    sched_boost=0
+}
+view_clicked{
+    describe=点击控件时切换的设定
+    sc_min_level=14
+    sc_max_level=20
+    bc_min_level=14
+    bc_max_level=20
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=50
+    bc_extra_perf=50
+    xc_extra_perf=0
+    sched_rt_boost=50
+    sched_ta_boost=50
+    sched_boost=0
+}
+view_swipe{
+    describe=滑动控件时切换的设定
+    sc_min_level=16
+    sc_max_level=20
+    bc_min_level=16
+    bc_max_level=20
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=50
+    bc_extra_perf=50
+    xc_extra_perf=0
+    sched_rt_boost=50
+    sched_ta_boost=50
+    sched_boost=0
+}
+window_changed{
+    describe=窗口改变时切换的设定
+    sc_min_level=18
+    sc_max_level=20
+    bc_min_level=18
+    bc_max_level=20
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=50
+    bc_extra_perf=50
+    xc_extra_perf=0
+    sched_rt_boost=80
+    sched_ta_boost=80
+    sched_boost=0
+}
+cpu_heavy_load{
+    describe=CPU重负载时切换的设定
+    sc_min_level=20
+    sc_max_level=20
+    bc_min_level=20
+    bc_max_level=20
+    xc_min_level=0
+    xc_max_level=0
+    sc_extra_perf=50
+    bc_extra_perf=50
+    xc_extra_perf=0
+    sched_rt_boost=80
+    sched_ta_boost=80
+    sched_boost=0
+}
